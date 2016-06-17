@@ -3,20 +3,20 @@ class DataSource < ActiveRecord::Base
   has_many :workspaces, :through => :workspace_data_sources
   has_many :data_source_accounts
 
-  def self.accessible_to?(options)
+  def self.accessible_to(options)
     user = options[:user]
     workspace = options[:workspace]
 
     if workspace
-      data_source_accounts.where(:workspace => workspace)
+      DataSourceAccount.where(:workspace => workspace)
     elsif user
-      data_source_accounts.where(:user => user)
+      DataSourceAccount.where(:user => user)
     else
       []
     end
   end
 
   def accessible_to?(options)
-    self.accessible_to(options).any?
+    DataSource.accessible_to(options).any?
   end
 end

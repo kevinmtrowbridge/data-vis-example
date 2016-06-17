@@ -14,6 +14,7 @@
 ActiveRecord::Schema.define(version: 20160617222639) do
 
   create_table "data_source_accounts", force: :cascade do |t|
+    t.string   "password"
     t.integer  "data_source_id"
     t.integer  "user_id"
     t.integer  "workspace_id"
@@ -22,11 +23,13 @@ ActiveRecord::Schema.define(version: 20160617222639) do
   end
 
   create_table "data_sources", force: :cascade do |t|
+    t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "datasets", force: :cascade do |t|
+    t.string   "name"
     t.integer  "data_source_id"
     t.integer  "hdfs_data_source_id"
     t.datetime "created_at",          null: false
@@ -34,19 +37,24 @@ ActiveRecord::Schema.define(version: 20160617222639) do
   end
 
   create_table "hdfs_data_source_connection_parameters_sets", force: :cascade do |t|
+    t.string   "connection_parameters"
     t.integer  "hdfs_data_source_id"
     t.integer  "user_id"
     t.integer  "workspace_id"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
   end
 
   create_table "hdfs_data_sources", force: :cascade do |t|
+    t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "workspace_data_sources", force: :cascade do |t|
@@ -65,6 +73,7 @@ ActiveRecord::Schema.define(version: 20160617222639) do
   end
 
   create_table "workspaces", force: :cascade do |t|
+    t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
