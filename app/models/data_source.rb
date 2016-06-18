@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: data_sources
+#
+#  id         :integer          not null, primary key
+#  name       :string
+#  public     :boolean
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 class DataSource < ActiveRecord::Base
   has_many :workspace_data_sources, :as => :polymorphic_data_source
   has_many :workspaces, :through => :workspace_data_sources
