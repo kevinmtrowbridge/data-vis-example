@@ -1,7 +1,6 @@
 # README
 
-A sample app developed to understand how best to model a feature "Data Visibility" ... developed inside of a huge app,
-for a client of mine.
+A sample app developed to understand how best to model a feature "Data Visibility" ... for a huge app.
 
 
 ## Generating a model relationship diagram ...
@@ -14,3 +13,12 @@ To regenerate, simply do:
  
 ![Model diagram](./doc/models_brief.svg) 
 ![Model diagram](./doc/models_complete.svg)
+
+
+## Generating annotations
+
+Model annotations provided by canonical: https://github.com/ctran/annotate_models
+
+To regenerate, simply do:
+
+    bundle exec annotate
