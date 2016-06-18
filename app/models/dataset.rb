@@ -22,11 +22,33 @@ class Dataset < ActiveRecord::Base
     user = options[:user]
 
     datasets = workspace.datasets
-    datasets.each do |d|
-      unless d.data_source.accessible_to?(options)
-        raise "Dataset not accessible to workspace"
-      end
-    end
+
+
+    # Naive implementation
+
+    # datasets.each do |d|
+    #   unless d.data_source.accessible_to?(options)
+    #     raise "Dataset not accessible to workspace"
+    #   end
+    # end
+
+
+    # This will scale better
+
+    # dataset_data_source_ids = datasets.pluck(:data_source_id).compact
+    # accessible_data_sources = DataSource.accessible_to(options).pluck(:id)
+    # if (dataset_data_source_ids - accessible_data_sources).any?
+    #   raise "Dataset not accessible to workspace"
+    # end
+    #
+    # dataset_hdfs_data_source_ids = datasets.pluck(:hdfs_data_source_id).compact
+    # accessible_hdfs_data_sources = HdfsDataSource.accessible_to(options).pluck(:id)
+    # if (dataset_hdfs_data_source_ids - accessible_hdfs_data_sources).any?
+    #   raise "Hdfs Dataset not accessible to workspace"
+    # end
+
+
+    datasets
   end
 
   def polymorphic_data_source
@@ -46,6 +68,7 @@ class Dataset < ActiveRecord::Base
     else
       raise "No explanation for why dataset accessible"
     end
+
   end
 
 end

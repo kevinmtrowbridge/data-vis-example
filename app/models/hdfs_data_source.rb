@@ -61,5 +61,7 @@ class HdfsDataSource < ActiveRecord::Base
     elsif public
       return 'this data source is public, accessible to all workspaces'
     end
+
+    "not accessible"
   end
 end
