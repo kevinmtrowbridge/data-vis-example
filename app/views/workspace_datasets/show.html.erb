@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Dataset:</strong>
+  <%= @workspace_dataset.dataset_id %>
+</p>
+
+<p>
+  <strong>Workspace:</strong>
+  <%= @workspace_dataset.workspace_id %>
+</p>
+
+<%= link_to 'Edit', edit_workspace_dataset_path(@workspace_dataset) %> |
+<%= link_to 'Back', workspace_datasets_path %>

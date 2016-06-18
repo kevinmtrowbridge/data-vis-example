@@ -1,25 +1,56 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @workspace.name %>
-</p>
+<h2>
+  Workspace: <%= @workspace.name %>
+</h2>
+
+<br/>
+<br/>
+
+<h2>"Pinned" datasets (workspace datasets)</h2>
+<table>
+  <tr><th>Name</th><th>Polymorphic data source</th><th>Why accessible?</th></tr>
+  <% @datasets.each do |d| %>
+    <tr>
+      <td><%= d.name %></td>
+      <td><%= d.polymorphic_data_source.class %><%= d.polymorphic_data_source.name %></td>
+      <td><%= d.explain_accessible_to(:user => @user, :workspace => @workspace) %></td>
+    </tr>
+  <% end %>
+</table>
+
+<br/>
+<br/>
+<br/>
 
 <h2>Data sources</h2>
 <table>
   <tr><th>Name</th><th>Why accessible?</th></tr>
+  <% @data_sources.each do |ds| %>
+    <tr>
+    <td><%= ds.name %></td>
+    <td><%= ds.explain_accessible_to(:user => @user, :workspace => @workspace) %></td>
+    </tr>
+  <% end %>
 </table>
-<% @data_sources.each do |ds| %>
-  <%= ds.name %>
-  <%= ds.explain_accessible_to(:user => @user, :workspace => @workspace) %>
-<% end %>
+
+<br/>
+<br/>
+<br/>
 
 <h2>Hdfs data sources</h2>
-<% @hdfs_data_sources.each do |hds| %>
-  <%= hds.name %>
-  <%= hds.explain_accessible_to(:user => @user, :workspace => @workspace) %>
-<% end %>
+<table>
+  <tr><th>Name</th><th>Why accessible?</th></tr>
+  <% @hdfs_data_sources.each do |hds| %>
+    <tr>
+      <td><%= hds.name %></td>
+      <td><%= hds.explain_accessible_to(:user => @user, :workspace => @workspace) %></td>
+    </tr>
+  <% end %>
+</table>
 
+<br/>
+<br/>
 <br/>
 
 <%= link_to 'Edit', edit_workspace_path(@workspace) %> |

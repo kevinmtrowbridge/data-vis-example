@@ -54,3 +54,15 @@ div.field, div.actions {
   font-size: 12px;
   list-style: square;
 }
+
+table {
+  border-collapse: collapse;
+}
+
+table, th, td {
+  border: 1px solid black;
+}
+
+td {
+  padding: 5px;
+}

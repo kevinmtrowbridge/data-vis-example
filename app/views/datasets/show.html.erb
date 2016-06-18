@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @dataset.name %>
+</p>
+
+<p>
+  <strong>Data source:</strong>
+  <%= @dataset.data_source_id %>
+</p>
+
+<p>
+  <strong>Hdfs data source:</strong>
+  <%= @dataset.hdfs_data_source_id %>
+</p>
+
+<%= link_to 'Edit', edit_dataset_path(@dataset) %> |
+<%= link_to 'Back', datasets_path %>

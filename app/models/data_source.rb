@@ -37,7 +37,7 @@ class DataSource < ActiveRecord::Base
     workspace = options[:workspace]
 
     if workspace && data_source_accounts.where(:workspace => workspace).any?
-      return 'this data source is a member of the workspace'
+      return 'this data source is accessible to this workspace'
     elsif user && data_source_accounts.where(:user => user).any?
       return 'this data source is accessible to your user'
     elsif public

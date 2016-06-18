@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :datasets
+  resources :workspace_datasets
   resources :hdfs_data_sources
   resources :hdfs_data_source_connection_parameters_sets
   root :to => 'dashboard#index'

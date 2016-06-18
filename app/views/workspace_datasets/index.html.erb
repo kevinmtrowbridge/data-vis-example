@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Workspace Datasets</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Dataset</th>
+      <th>Workspace</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @workspace_datasets.each do |workspace_dataset| %>
+      <tr>
+        <td><%= workspace_dataset.dataset_id %></td>
+        <td><%= workspace_dataset.workspace_id %></td>
+        <td><%= link_to 'Show', workspace_dataset %></td>
+        <td><%= link_to 'Edit', edit_workspace_dataset_path(workspace_dataset) %></td>
+        <td><%= link_to 'Destroy', workspace_dataset, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Workspace dataset', new_workspace_dataset_path %>

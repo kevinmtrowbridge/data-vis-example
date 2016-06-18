@@ -10,6 +10,7 @@ class WorkspacesController < ApplicationController
   def show
     @data_sources = DataSource.accessible_to(:workspace => @workspace, :user => User.first)
     @hdfs_data_sources = HdfsDataSource.accessible_to(:workspace => @workspace, :user => User.first)
+    @datasets = Dataset.accessible_to(:workspace => @workspace, :user => User.first)
   end
 
   # GET /workspaces/new
