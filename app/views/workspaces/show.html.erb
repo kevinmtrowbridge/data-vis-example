@@ -32,8 +32,8 @@
   <tr>
     <th>Name</th>
     <th>Why accessible?</th>
-    <th>API DataSource path</th>
-    <th>API DataSourceAccount path</th>
+    <th>API DataSource</th>
+    <th>API DataSourceAccount</th>
   </tr>
   <% @data_sources.each do |ds| %>
     <tr>
@@ -59,14 +59,19 @@
   <tr>
     <th>Name</th>
     <th>Why accessible?</th>
+    <th>API HdfsDataSource</th>
   </tr>
   <% @hdfs_data_sources.each do |hds| %>
     <tr>
       <td><%= hds.name %></td>
       <td><%= hds.explain_accessible_to(:user => @user, :workspace => @workspace) %></td>
+      <td><%= link_to "API HdfsDataSource",
+                      workspace_hdfs_data_source_path(@workspace, hds) %></td>
     </tr>
   <% end %>
 </table>
+<td><%= link_to "API HdfsDataSources",
+                workspace_hdfs_data_sources_path(@workspace) %></td>
 
 <br/>
 <br/>

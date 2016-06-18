@@ -28,6 +28,24 @@ class HdfsDataSource < ActiveRecord::Base
     HdfsDataSource.where("id IN (?) OR public = ?", ids, true)
   end
 
+  def hdfs_data_source_connection_parameters_sets_for(options)
+    user = options[:user]
+    workspace = options[:workspace]
+
+    if workspace
+      return hdfs_data_source_connection_parameters_sets.where('workspace_id = ? OR user_id = ?', workspace, user).first
+    elsif user
+      return hdfs_data_source_connection_parameters_sets.where(:user => user).first
+    end
+
+    nil
+  end
+
+  def merge_connection_parameters_for(options)
+    cp = hdfs_data_source_connection_parameters_sets_for(options)
+    attributes.merge cp.attributes
+  end
+
   def accessible_to?(options)
     HdfsDataSource.accessible_to(options).any?
   end

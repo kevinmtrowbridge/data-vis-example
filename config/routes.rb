@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     resources :data_sources, :only => [:index, :show], :controller => :workspace_data_sources do
       resource :data_source_account, :only => [:show], :controller => :workspace_data_source_accounts
     end
-    resources :hdfs_data_sources, :only => [:index, :show]
+    resources :hdfs_data_sources, :only => [:index, :show], :controller => :workspace_hdfs_data_sources
   end
 
   resources :users
