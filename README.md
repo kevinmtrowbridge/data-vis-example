@@ -1,6 +1,6 @@
 # README
 
-A sample app developed to understand how best to model a feature "Data Visibility" ... for a huge app.
+A sample app developed to understand how best to implement a feature "Data Visibility" ... for a huge app.
 
 
 ## Generating a model relationship diagram ...
