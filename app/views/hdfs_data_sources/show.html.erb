@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @hdfs_data_source.name %>
+</p>
+
+<p>
+  <strong>Public:</strong>
+  <%= @hdfs_data_source.public %>
+</p>
+
+<%= link_to 'Edit', edit_hdfs_data_source_path(@hdfs_data_source) %> |
+<%= link_to 'Back', hdfs_data_sources_path %>

@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Hdfs Data Source Connection Parameters Sets</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Connection parameters</th>
+      <th>Hdfs data source</th>
+      <th>User</th>
+      <th>Workspace</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @hdfs_data_source_connection_parameters_sets.each do |hdfs_data_source_connection_parameters_set| %>
+      <tr>
+        <td><%= hdfs_data_source_connection_parameters_set.connection_parameters %></td>
+        <td><%= hdfs_data_source_connection_parameters_set.hdfs_data_source_id %></td>
+        <td><%= hdfs_data_source_connection_parameters_set.user_id %></td>
+        <td><%= hdfs_data_source_connection_parameters_set.workspace_id %></td>
+        <td><%= link_to 'Show', hdfs_data_source_connection_parameters_set %></td>
+        <td><%= link_to 'Edit', edit_hdfs_data_source_connection_parameters_set_path(hdfs_data_source_connection_parameters_set) %></td>
+        <td><%= link_to 'Destroy', hdfs_data_source_connection_parameters_set, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Hdfs data source connection parameters set', new_hdfs_data_source_connection_parameters_set_path %>

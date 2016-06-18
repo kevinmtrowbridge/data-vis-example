@@ -7,20 +7,30 @@ class HdfsDataSource < ActiveRecord::Base
     user = options[:user]
     workspace = options[:workspace]
 
-    # if workspace
-    #   DataSourceAccount.where(:workspace => workspace)
-    # elsif user
-    #   DataSourceAccount.where(:user => user)
-    # else
-      []
-    # end
+    ids = []
+    if workspace
+      ids = HdfsDataSourceConnectionParametersSet.where('workspace_id = ? OR user_id = ?', workspace, user).pluck(:hdfs_data_source_id)
+    elsif user
+      ids = HdfsDataSourceConnectionParametersSet.where(user_id = ?', workspace, user).pluck(&:hdfs_data_source_id)
+    end
+
+    HdfsDataSource.where("id IN (?) OR public = ?", ids, true)
   end
 
   def accessible_to?(options)
-    DataSource.accessible_to(options).any?
+    HdfsDataSource.accessible_to(options).any?
   end
 
-  def explain_accessible_to?(options)
+  def explain_accessible_to(options)
+    user = options[:user]
+    workspace = options[:workspace]
 
+    if workspace && hdfs_data_source_connection_parameters_sets.where(:workspace => workspace).any?
+      return 'this data source is a member of the workspace'
+    elsif user && hdfs_data_source_connection_parameters_sets.where(:user => user).any?
+      return 'this data source is accessible to your user NOTE THIS DOES NOT EXIST IN CHORUS AND NO PLANS TO BUILD'
+    elsif public
+      return 'this data source is public, accessible to all workspaces'
+    end
   end
 end

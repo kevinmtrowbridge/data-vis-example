@@ -1,0 +1,33 @@
+<%= form_for(@hdfs_data_source_connection_parameters_set) do |f| %>
+  <% if @hdfs_data_source_connection_parameters_set.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@hdfs_data_source_connection_parameters_set.errors.count, "error") %> prohibited this hdfs_data_source_connection_parameters_set from being saved:</h2>
+
+      <ul>
+      <% @hdfs_data_source_connection_parameters_set.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :connection_parameters %><br>
+    <%= f.text_field :connection_parameters %>
+  </div>
+  <div class="field">
+    <%= f.label :hdfs_data_source_id %><br>
+    <%= f.number_field :hdfs_data_source_id %>
+  </div>
+  <div class="field">
+    <%= f.label :user_id %><br>
+    <%= f.number_field :user_id %>
+  </div>
+  <div class="field">
+    <%= f.label :workspace_id %><br>
+    <%= f.number_field :workspace_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
