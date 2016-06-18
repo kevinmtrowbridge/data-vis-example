@@ -53,6 +53,6 @@ class DataSourcesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def data_source_params
-      params.require(:data_source).permit(:name)
+      params.require(:data_source).permit(:name, :public)
     end
 end

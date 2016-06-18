@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20160617222639) do
 
   create_table "data_sources", force: :cascade do |t|
     t.string   "name"
+    t.boolean  "public"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -47,6 +48,7 @@ ActiveRecord::Schema.define(version: 20160617222639) do
 
   create_table "hdfs_data_sources", force: :cascade do |t|
     t.string   "name"
+    t.boolean  "public"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

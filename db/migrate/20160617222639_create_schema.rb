@@ -2,6 +2,7 @@ class CreateSchema < ActiveRecord::Migration
   def up
     create_table :data_sources do |t|
       t.string :name
+      t.boolean :public
 
       t.timestamps null: false
     end
@@ -27,6 +28,7 @@ class CreateSchema < ActiveRecord::Migration
 
     create_table :hdfs_data_sources do |t|
       t.string :name
+      t.boolean :public
 
       t.timestamps null: false
     end

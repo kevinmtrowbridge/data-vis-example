@@ -7,16 +7,14 @@ class DataSource < ActiveRecord::Base
     user = options[:user]
     workspace = options[:workspace]
 
+    ids = []
     if workspace
       ids = DataSourceAccount.where('workspace_id = ? OR user_id = ?', workspace, user).pluck(:data_source_id)
-      DataSource.find(ids)
     elsif user
       ids = DataSourceAccount.where(user_id = ?', workspace, user).pluck(&:data_source_id)
-      DataSource.find(ids)
-    else
-      []
     end
 
+    DataSource.where("id IN (?) OR public = ?", ids, true)
   end
 
   def accessible_to?(options)
@@ -28,9 +26,11 @@ class DataSource < ActiveRecord::Base
     workspace = options[:workspace]
 
     if workspace && data_source_accounts.where(:workspace => workspace).any?
-      'this data source is a member of the workspace'
-    elsif user && data_source_accounts.where(:user => user)
-      'this data source is accessible to your user'
+      return 'this data source is a member of the workspace'
+    elsif user && data_source_accounts.where(:user => user).any?
+      return 'this data source is accessible to your user'
+    elsif public
+      return 'this data source is public, accessible to all workspaces'
     end
   end
 end

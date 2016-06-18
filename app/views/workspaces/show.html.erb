@@ -9,13 +9,13 @@
 <table>
   <tr><th>Name</th><th>Why accessible?</th></tr>
 </table>
-<%= @data_sources.each do |ds| %>
+<% @data_sources.each do |ds| %>
   <%= ds.name %>
   <%= ds.explain_accessible_to(:user => @user, :workspace => @workspace) %>
 <% end %>
 
 <h2>Hdfs data sources</h2>
-<%= @hdfs_data_sources.each do |hds| %>
+<% @hdfs_data_sources.each do |hds| %>
   <%= hds.name %>
   <%= hds.explain_accessible_to(:user => @user, :workspace => @workspace) %>
 <% end %>

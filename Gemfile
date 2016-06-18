@@ -8,4 +8,3 @@ gem "minitest-rails"
 gem "jquery-rails"
 
 gem 'railroady'
-gem "rails-erd"
