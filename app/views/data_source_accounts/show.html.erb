@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Id:</strong>
+  <%= @data_source_account.id %>
+</p>
+
+<p>
+  <strong>Password:</strong>
+  <%= @data_source_account.password %>
+</p>
+
+<p>
+  <strong>Data source:</strong>
+  <%= @data_source_account.data_source_id %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @data_source_account.user_id %>
+</p>
+
+<p>
+  <strong>Workspace:</strong>
+  <%= @data_source_account.workspace_id %>
+</p>
+
+<%= link_to 'Edit', edit_data_source_account_path(@data_source_account) %> |
+<%= link_to 'Back', data_source_accounts_path %>
