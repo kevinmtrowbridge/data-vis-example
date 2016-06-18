@@ -9,7 +9,11 @@
 
 <h2>"Pinned" datasets (workspace datasets)</h2>
 <table>
-  <tr><th>Name</th><th>Polymorphic data source</th><th>Why accessible?</th></tr>
+  <tr>
+    <th>Name</th>
+    <th>Polymorphic data source</th>
+    <th>Why accessible?</th>
+  </tr>
   <% @datasets.each do |d| %>
     <tr>
       <td><%= d.name %></td>
@@ -25,14 +29,26 @@
 
 <h2>Data sources</h2>
 <table>
-  <tr><th>Name</th><th>Why accessible?</th></tr>
+  <tr>
+    <th>Name</th>
+    <th>Why accessible?</th>
+    <th>API DataSource path</th>
+    <th>API DataSourceAccount path</th>
+  </tr>
   <% @data_sources.each do |ds| %>
     <tr>
-    <td><%= ds.name %></td>
-    <td><%= ds.explain_accessible_to(:user => @user, :workspace => @workspace) %></td>
+      <td><%= ds.name %></td>
+      <td><%= ds.explain_accessible_to(:user => @user, :workspace => @workspace) %></td>
+      <td><%= link_to "API DataSource",
+                      workspace_data_source_path(@workspace, ds) %></td>
+      <td><%= link_to "API DataSourceAccount",
+                      workspace_data_source_data_source_account_path(@workspace, ds, ds.data_source_account_for(:user => @user, :workspace => @workspace)) %></td>
     </tr>
   <% end %>
 </table>
+<td><%= link_to "API DataSources",
+                workspace_data_sources_path(@workspace) %></td>
+
 
 <br/>
 <br/>
@@ -40,7 +56,10 @@
 
 <h2>Hdfs data sources</h2>
 <table>
-  <tr><th>Name</th><th>Why accessible?</th></tr>
+  <tr>
+    <th>Name</th>
+    <th>Why accessible?</th>
+  </tr>
   <% @hdfs_data_sources.each do |hds| %>
     <tr>
       <td><%= hds.name %></td>

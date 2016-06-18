@@ -28,8 +28,21 @@ class DataSource < ActiveRecord::Base
     DataSource.where("id IN (?) OR public = ?", ids, true)
   end
 
+  def data_source_account_for(options)
+    user = options[:user]
+    workspace = options[:workspace]
+
+    if workspace
+      return data_source_accounts.where('workspace_id = ? OR user_id = ?', workspace, user).first
+    elsif user
+      return data_source_accounts.where(:user => user).first
+    end
+
+    nil
+  end
+
   def accessible_to?(options)
-    DataSource.accessible_to(options).any?
+    data_source_account_for(options).present?
   end
 
   def explain_accessible_to(options)
