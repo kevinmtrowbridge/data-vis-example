@@ -40,14 +40,14 @@
       <td><%= ds.name %></td>
       <td><%= ds.explain_accessible_to(:user => @user, :workspace => @workspace) %></td>
       <td><%= link_to "API DataSource",
-                      workspace_data_source_path(@workspace, ds) %></td>
+                      workspace_api_data_source_path(@workspace, ds) %></td>
       <td><%= link_to "API DataSourceAccount",
-                      workspace_data_source_data_source_account_path(@workspace, ds, ds.data_source_account_for(:user => @user, :workspace => @workspace)) %></td>
+                      workspace_api_data_source_data_source_account_path(@workspace, ds, ds.data_source_account_for(:user => @user, :workspace => @workspace)) %></td>
     </tr>
   <% end %>
 </table>
 <td><%= link_to "API DataSources",
-                workspace_data_sources_path(@workspace) %></td>
+                workspace_api_data_source_index_path(@workspace) %></td>
 
 
 <br/>

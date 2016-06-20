@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Workspace Data Sources</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Polymorphic data source</th>
+      <th>Polymorphic data source type</th>
+      <th>Workspace</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @workspace_data_sources.each do |workspace_data_source| %>
+      <tr>
+        <td><%= workspace_data_source.polymorphic_data_source_id %></td>
+        <td><%= workspace_data_source.polymorphic_data_source_type %></td>
+        <td><%= workspace_data_source.workspace_id %></td>
+        <td><%= link_to 'Show', workspace_data_source %></td>
+        <td><%= link_to 'Edit', edit_workspace_data_source_path(workspace_data_source) %></td>
+        <td><%= link_to 'Destroy', workspace_data_source, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Workspace data source', new_workspace_data_source_path %>

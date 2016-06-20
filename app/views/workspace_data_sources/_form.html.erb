@@ -1,0 +1,29 @@
+<%= form_for(@workspace_data_source) do |f| %>
+  <% if @workspace_data_source.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@workspace_data_source.errors.count, "error") %> prohibited this workspace_data_source from being saved:</h2>
+
+      <ul>
+      <% @workspace_data_source.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :polymorphic_data_source_id %><br>
+    <%= f.number_field :polymorphic_data_source_id %>
+  </div>
+  <div class="field">
+    <%= f.label :polymorphic_data_source_type %><br>
+    <%= f.text_field :polymorphic_data_source_type %>
+  </div>
+  <div class="field">
+    <%= f.label :workspace_id %><br>
+    <%= f.number_field :workspace_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

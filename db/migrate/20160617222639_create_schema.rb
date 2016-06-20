@@ -57,7 +57,7 @@ class CreateSchema < ActiveRecord::Migration
 
     create_table :workspace_data_sources do |t|
       t.integer :polymorphic_data_source_id
-      t.integer :polymorphic_data_source_type
+      t.string :polymorphic_data_source_type
       t.integer :workspace_id
 
       t.timestamps null: false

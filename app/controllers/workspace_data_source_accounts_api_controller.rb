@@ -1,4 +1,4 @@
-class WorkspaceDataSourceAccountsController < ApplicationController
+class WorkspaceDataSourceAccountsApiController < ApplicationController
   before_action :set_ivars, only: [:show]
 
   # GET /data_source_accounts/1

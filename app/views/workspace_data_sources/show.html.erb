@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Polymorphic data source:</strong>
+  <%= @workspace_data_source.polymorphic_data_source_id %>
+</p>
+
+<p>
+  <strong>Polymorphic data source type:</strong>
+  <%= @workspace_data_source.polymorphic_data_source_type %>
+</p>
+
+<p>
+  <strong>Workspace:</strong>
+  <%= @workspace_data_source.workspace_id %>
+</p>
+
+<%= link_to 'Edit', edit_workspace_data_source_path(@workspace_data_source) %> |
+<%= link_to 'Back', workspace_data_sources_path %>

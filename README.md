@@ -10,9 +10,8 @@ We use a utility to generate a model relationship diagram: https://github.com/pr
 To regenerate, simply do:
 
     rake diagram:models:all
- 
-![Model diagram](./doc/models_brief.svg) 
-![Model diagram](./doc/models_complete.svg)
+  
+![Model diagram](./doc/models_complete.png)
 
 
 ## Generating annotations

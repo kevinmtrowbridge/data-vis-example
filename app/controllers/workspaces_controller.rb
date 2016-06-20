@@ -8,9 +8,9 @@ class WorkspacesController < ApplicationController
 
   # GET /workspaces/1
   def show
-    @data_sources = DataSource.accessible_to(:workspace => @workspace, :user => User.first)
-    @hdfs_data_sources = HdfsDataSource.accessible_to(:workspace => @workspace, :user => User.first)
-    @datasets = Dataset.accessible_to(:workspace => @workspace, :user => User.first)
+    @data_sources = @workspace.accessible_data_sources
+    @hdfs_data_sources = @workspace.accessible_hdfs_data_sources
+    @datasets = @workspace.datasets
   end
 
   # GET /workspaces/new

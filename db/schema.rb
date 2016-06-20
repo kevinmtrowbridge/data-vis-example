@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 20160617222639) do
 
   create_table "workspace_data_sources", force: :cascade do |t|
     t.integer  "polymorphic_data_source_id"
-    t.integer  "polymorphic_data_source_type"
+    t.string   "polymorphic_data_source_type"
     t.integer  "workspace_id"
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
