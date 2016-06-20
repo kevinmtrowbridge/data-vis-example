@@ -8,7 +8,7 @@ inaccessible_data_source = DataSource.create(:name => 'inaccessible data source'
 user_hdfs_data_source = HdfsDataSource.create(:name => 'User limited hdfs data source')
 workspace_hdfs_data_source = HdfsDataSource.create(:name => 'Workspace limited hdfs data source')
 public_hdfs_data_source = HdfsDataSource.create(:name => 'Public hdfs data source', :public => true)
-inaccessible_hdfs_data_source = DataSource.create(:name => 'inaccessible hdfs data source')
+inaccessible_hdfs_data_source = HdfsDataSource.create(:name => 'inaccessible hdfs data source')
 
 user_josh = User.create(:name => 'Josh')
 
@@ -28,7 +28,7 @@ inaccessible_dataset = Dataset.create(:data_source => inaccessible_data_source, 
 user_hdfs_dataset = Dataset.create(:hdfs_data_source => user_hdfs_data_source, :name => 'eating habits')
 workspace_hdfs_dataset = Dataset.create(:hdfs_data_source => workspace_hdfs_data_source, :name => 'patient supa secret stuff')
 public_hdfs_dataset = Dataset.create(:hdfs_data_source => public_hdfs_data_source, :name => 'patient favorite foods')
-inaccessible_hdfs_dataset = Dataset.create(:data_source => inaccessible_data_source, :name => 'whoops no authorization to this one')
+inaccessible_hdfs_dataset = Dataset.create(:hdfs_data_source => inaccessible_hdfs_data_source, :name => 'whoops no authorization to this one')
 
 WorkspaceDataset.create(:dataset => user_dataset, :workspace => workspace)
 WorkspaceDataset.create(:dataset => workspace_dataset, :workspace => workspace)
@@ -41,5 +41,7 @@ WorkspaceDataset.create(:dataset => inaccessible_hdfs_dataset, :workspace => wor
 
 WorkspaceDataSource.create(:workspace => workspace, :polymorphic_data_source => user_data_source)
 WorkspaceDataSource.create(:workspace => workspace, :polymorphic_data_source => workspace_data_source)
+WorkspaceDataSource.create(:workspace => workspace, :polymorphic_data_source => inaccessible_data_source)
 WorkspaceDataSource.create(:workspace => workspace, :polymorphic_data_source => user_hdfs_data_source)
 WorkspaceDataSource.create(:workspace => workspace, :polymorphic_data_source => workspace_hdfs_data_source)
+WorkspaceDataSource.create(:workspace => workspace, :polymorphic_data_source => inaccessible_hdfs_data_source)
